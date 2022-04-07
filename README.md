@@ -1,4 +1,4 @@
-#amazonPriceChecker
+# Amazon Price Checker
 - 👋 Hi, I’m @WilliamSpanfelner
 - 👀 I’m interested in using Python with Swift in iOS environments and why it may or may not be desirable.
 - 🌱 I’m currently learning more Python with the London App Brewery and Angela Yu's [100 Days of Code: 
