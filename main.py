@@ -1,5 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
+import pprint
+
+pp = pprint.PrettyPrinter(indent=4)
 
 CHAIR_URL = "https://www.amazon.com/BZLSFHZ-Ergonomic-Adjustable-Headrest-Breathable/dp/B09MB1QT4G/ref=sr_1_206?crid=1BTMETGBD2VVO&keywords=chairs+for+desk&qid=1649319961&sprefix=chairs%2Caps%2C394&sr=8-206"
 
@@ -9,15 +12,12 @@ headers = {
 }
 
 response = requests.get(CHAIR_URL, headers=headers)
-print(response.status_code) #503 Service Unavailable Error on first request without headers; 200 with headers
 
-print(response.text)
+soup = BeautifulSoup(response.text, "lxml")
+item_price_no_currency = soup.find("span", "a-offscreen").getText().split("$")[1]
+item_price_no_commas = item_price_no_currency.replace(",", "")
+item_price = float(item_price_no_commas)
+
+print(item_price)
 
 
-
-
-
-
-# headers not required
-#    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-#    'Connection': 'keep-alive',
